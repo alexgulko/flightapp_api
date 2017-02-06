@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteBase /api/
+RewriteCond %{REQUEST_URI} !^/api/public/.*$
+RewriteRule ^(.*)$ /api/public/$1 [L]
