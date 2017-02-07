@@ -16,3 +16,13 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+Route::post('authenticate', 'AuthenticateController@authenticate');
+
+Route::group(['middleware' => ['jwt.auth', 'jwt.refresh']], function () {
+
+    Route::get('aircrafts', 'AircraftController@index')->name('aircrafts');
+    Route::get('aircraft/{type}', 'AircraftController@show')->name('showAircraft');
+
+});

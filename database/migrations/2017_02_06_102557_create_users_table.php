@@ -19,7 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('name', 40)->collation('utf8_general_ci');
             $table->string('address', 50)->collation('utf8_general_ci');
             $table->string('password')->collation('utf8_general_ci');
-            $table->boolean('notification')->collation('utf8_general_ci');
             $table->rememberToken();
             $table->timestamps();
         });

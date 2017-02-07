@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAircraftsTable extends Migration
+class CreateBookingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateAircraftsTable extends Migration
      */
     public function up()
     {
-        Schema::create('aircrafts', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type', 30)->collation('utf8_general_ci');
-            $table->string('manufacturer', 30)->collation('utf8_general_ci');
-            $table->string('description', 30)->collation('utf8_general_ci');
+            $table->integer('user_id');
+            $table->string('booking_name', 50)->collation('utf8_general_ci');
+            $table->string('flight_notification')->collation('utf8_general_ci');
+            $table->string('duty_time')->collation('utf8_general_ci');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateAircraftsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aircrafts');
+        Schema::dropIfExists('bookings');
     }
 }
